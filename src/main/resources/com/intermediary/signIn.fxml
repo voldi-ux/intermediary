@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intermediary.controllers.AuthController">
+   <children>
+      <ImageView fitHeight="760.0" fitWidth="1080.0"  pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@peter-olexa-Q5GnQxjX7Jk-unsplash.jpg" />
+         </image>
+      </ImageView>
+      <VBox layoutX="325.0" layoutY="200.0" prefHeight="382.0" prefWidth="423.0">
+         <children>
+            <Text blendMode="COLOR_DODGE" fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Text>
+            <TextField prefHeight="40.0" promptText="Email">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField prefHeight="40.0" promptText="Password">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text fill="WHITE" onMouseClicked="#showSignUpScene" strokeType="OUTSIDE" strokeWidth="0.0" text="Do not have an account ? click here to sign up">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="423.0">
+               <children>
+                  <Button alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#signIn" prefHeight="25.0" prefWidth="123.0" text="sign in">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Text blendMode="COLOR_DODGE" fill="#fffdfd" layoutX="405.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intermediary">
+         <font>
+            <Font size="47.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

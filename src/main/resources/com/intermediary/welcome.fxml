@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intermediary.controllers.WelcomeController">
+   <children>
+      <ImageView depthTest="ENABLE" fitHeight="760.0" fitWidth="1080.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@peter-olexa-Q5GnQxjX7Jk-unsplash.jpg" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" />
+      <Text id="title" blendMode="COLOR_DODGE" layoutX="330.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intermediary" textAlignment="CENTER">
+         <font>
+            <Font size="75.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6399999856948853" green="0.6003809571266174" blue="0.3199999928474426" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <WebView fx:id="svgRenderer" blendMode="MULTIPLY" cache="true" layoutX="453.0" layoutY="420.0" onMouseEntered="#log" onMouseExited="#log" prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
