@@ -1,3 +1,9 @@
+com\intermediary\auth\AuthenticationManager.class
+com\intermediary\controllers\SecondaryController.class
+module-info.class
+com\intermediary\User.class
+com\intermediary\controllers\PrimaryController.class
+com\intermediary\firebase\Firebase.class
 com\intermediary\NavigationManager.class
 com\intermediary\controllers\SecondaryController.class
 com\intermediary\App.class
