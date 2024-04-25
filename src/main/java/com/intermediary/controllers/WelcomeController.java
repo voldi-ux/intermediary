@@ -39,8 +39,17 @@ public class WelcomeController extends MainController implements Initializable {
 						try {
 							Stage s = manager.getStage("welcome");
 							s.close(); // close the welcome screen
-							manager.addSceneToStage("main", "main");
-							manager.showStage("main");
+							
+							if(!authManager.isLogedIn()) {
+								manager.addSceneToStage("signIn", ""
+										+ "authStage");
+								manager.showStage("authStage");
+								
+							} else {
+								
+								manager.addSceneToStage("main", "main");
+								manager.showStage("main");
+							}
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

@@ -2,16 +2,23 @@ package com.intermediary.controllers;
 
 
 
+import com.google.firebase.FirebaseApp;
+import com.intermediary.auth.AuthenticationManager;
+import com.intermediary.firebase.Firebase;
+
 import javafx.fxml.FXML;
 
 public class AuthController extends MainController {
-	// this method may be called when signing in or signing up
-
+     private FirebaseApp firebaseApp = Firebase.getFirebase();
+      
+     // this method may be called when signing in or signing up
 	@FXML
 	private void signIn() throws Exception {
-		manager.addSceneToStage("main", "main");
-		manager.getStage("authStage").close();
-		manager.showStage("main");
+//		manager.addSceneToStage("main", "main");
+//		manager.getStage("authStage").close();
+//		manager.showStage("main");
+		
+		authManager.signIn("voldimuyumba57@gmail.com", "password");
 	}
 
 	@FXML

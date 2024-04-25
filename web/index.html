@@ -1,0 +1,72 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+
+	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+</head>
+
+<body>
+
+	<script>
+		const firebaseConfig = {
+			apiKey: "AIzaSyDTR8reLaje_zkyvYamzsKsOnHtlXlU_es",
+			authDomain: "fir-a8429.firebaseapp.com",
+			projectId: "fir-a8429",
+			storageBucket: "fir-a8429.appspot.com",
+			messagingSenderId: "92968739512",
+			appId: "1:92968739512:web:eb4b8b1a7feb91771dca4d"
+		};
+
+		const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+		const auth = firebaseApp.auth();
+
+		window.email = "voldimuyumba57@gmail.com";
+		window.pass = "password";
+
+	      async function createUser() {
+    try {
+        const userCredential = await auth.createUserWithEmailAndPassword(window.email, window.pass);
+        const user = userCredential.user;
+        return {
+            isSignedIn: true,
+            uid: user.uid
+        };
+    } catch (error) {
+        return {
+            isSignedIn: false,
+            msg: error.message
+        };
+    }
+}
+
+async function signIn() {
+    try {
+        const userCredential = await auth.signInWithEmailAndPassword(window.email, window.pass);
+        const user = userCredential.user;
+        console.log(user);
+        return {
+            isSignedIn: true,
+            uid: user.uid
+        };
+    } catch (error) {
+        return {
+            isSignedIn: false,
+            msg: error.message
+        };
+    }
+}
+
+
+	</script>
+</body>
+
+</html>
