@@ -57,21 +57,21 @@ public class AuthenticationManager {
 	public void handleSignIn(boolean isSignedIn, String uid) {
 		System.out.println(isSignedIn + uid);
 	}
-//
-//	private String readFileAsString(String path) {
-//		// TODO Auto-generated method stub
-//		String str = "";
-//		try {
-//			Scanner sn = new Scanner(new File(path));
-//
-//			while (sn.hasNextLine()) {
-//				str += sn.nextLine() + "\n";
-//			}
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		return str;
-//	}
+
+	private String readFileAsString(String path) {
+		// TODO Auto-generated method stub
+		String str = "";
+		try {
+			Scanner sn = new Scanner(new File(path));
+
+			while (sn.hasNextLine()) {
+				str += sn.nextLine() + "\n";
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return str;
+	}
 }
