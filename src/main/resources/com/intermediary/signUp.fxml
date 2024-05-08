@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField ?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -32,21 +33,21 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Text>
-            <TextField prefHeight="40.0" promptText="Email">
+            <TextField  fx:id="signUpEmailInput" prefHeight="40.0" promptText="Email">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
-            </TextField>
-            <TextField prefHeight="40.0" promptText="Password">
+            </TextField >
+            <PasswordField  fx:id="signUpPasswordInput" prefHeight="40.0" promptText="Password">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
-            </TextField>
-            <TextField prefHeight="40.0" promptText="Confirm Password">
+            </PasswordField >
+            <PasswordField  fx:id="signUpConfirmPasswordInput" prefHeight="40.0" promptText="Confirm Password">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
-            </TextField>
+            </PasswordField >
             <Text fill="WHITE" onMouseClicked="#showSignInScene" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account ? click here to sign in">
                <VBox.margin>
                   <Insets bottom="20.0" />
@@ -60,7 +61,7 @@
             </Text>
             <HBox alignment="CENTER" prefHeight="33.0" prefWidth="423.0">
                <children>
-                  <Button alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#signIn" prefHeight="25.0" prefWidth="123.0" text="sign up">
+                  <Button alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#signUp" prefHeight="25.0" prefWidth="123.0" text="sign up">
                      <font>
                         <Font size="14.0" />
                      </font>

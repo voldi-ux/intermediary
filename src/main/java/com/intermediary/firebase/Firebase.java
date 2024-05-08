@@ -6,23 +6,27 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.cloud.FirestoreClient;
 
 public class Firebase {
-	private static FirebaseApp firebase = null;
-
+	
+    private static Firestore store = null;
+    
 	private Firebase() {
 	}
 
-	public static FirebaseApp getFirebase() {
+	public static Firestore getStore() {
 
-		if (firebase == null) {
+		if (store == null) {
 			init();
           
 		}
-
-		return firebase;
+          
+		store = FirestoreClient.getFirestore();
+		return store;
 	}
 
 	private static void init() {
@@ -35,7 +39,6 @@ public class Firebase {
 			
 			FirebaseApp.initializeApp(options);
 			
-			firebase  = FirebaseApp.getInstance();
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

@@ -1,24 +1,20 @@
 package com.intermediary;
 
+import java.util.UUID;
+
 public class User {
-	private String uid;
-	private String username;
 	private String email;
+	private String password;
+	private String id;
 
-	public String getUid() {
-		return uid;
+	public User() {
 	}
 
-	public void setUid(String uid) {
-		this.uid = uid;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
+	public User(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.id = UUID.randomUUID().toString();
 	}
 
 	public String getEmail() {
@@ -27,6 +23,27 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", password=" + password + ", id=" + id + "]";
 	}
 
 }

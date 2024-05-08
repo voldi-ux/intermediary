@@ -2,29 +2,34 @@ package com.intermediary.auth;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.CollectionReference;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.Query;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.intermediary.User;
+import com.intermediary.firebase.Firebase;
 
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import netscape.javascript.JSObject;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
 //class to manager all authenticatio related stuff
 public class AuthenticationManager {
 	private User user;
 	private boolean isLogedIn = false;
+	private int COST = 10;
 	private static AuthenticationManager manager = null;
-
-
+	private static Firestore store = Firebase.getStore();
 
 	private AuthenticationManager() {
-	
-
 	}
 
 	@SuppressWarnings("unused")
-	 public static AuthenticationManager getAuthenticationManager() {
+	public static AuthenticationManager getAuthenticationManager() {
 		if (manager == null)
 			manager = new AuthenticationManager();
 		return manager;
@@ -50,10 +55,62 @@ public class AuthenticationManager {
 		this.isLogedIn = isLogedIn;
 	}
 
-	public void signIn(String email, String pass) {
-		
-	}
+	public boolean signIn(String email, String password) {
 	
+		CollectionReference users = store.collection("users");
+
+		Query emailPassQuery = users.whereEqualTo("email", email);// find a user
+
+		try {
+			List<QueryDocumentSnapshot> documents = emailPassQuery.get().get().getDocuments();
+			// we should not be able to have more than one with uers with the same email and
+			// password
+			if (documents.size() > 0) {
+				User user = documents.get(0).toObject(User.class);
+				if(BCrypt.verifyer().verify(password.getBytes(), user.getPassword().getBytes()).verified) {
+					System.out.println(user);
+					return true;
+				}
+			}
+
+		
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	public boolean signUp(String email, String password) {
+
+		String passHashed = BCrypt.withDefaults().hashToString(COST, password.toCharArray());
+		CollectionReference users = store.collection("users");
+
+		Query emailQuery = users.whereEqualTo("email", email);
+		try {
+			// a user with this email already exist, try another one
+			if (emailQuery.get().get().getDocuments().size() > 0) {
+				return false;
+			}
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		ApiFuture<DocumentReference> results = users.add(new User(email, passHashed));
+
+		if (!results.isCancelled()) {
+			return true;
+		}
+
+		return false;
+	}
+
 	public void handleSignIn(boolean isSignedIn, String uid) {
 		System.out.println(isSignedIn + uid);
 	}

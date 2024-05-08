@@ -27,12 +27,7 @@
             <TextField prefHeight="40.0" promptText="Git repo name" />
          </children>
       </VBox>
-      <VBox prefWidth="100.0" spacing="5.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Git repo name" />
-            <TextField prefHeight="40.0" promptText="git repo name" />
-         </children>
-      </VBox>
+ 
       <VBox prefWidth="100.0" spacing="5.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Git repo link" />

@@ -5,12 +5,9 @@ com\intermediary\User.class
 com\intermediary\controllers\PrimaryController.class
 com\intermediary\firebase\Firebase.class
 com\intermediary\NavigationManager.class
-com\intermediary\controllers\SecondaryController.class
 com\intermediary\App.class
 com\intermediary\controllers\WelcomeController$1.class
 com\intermediary\controllers\AuthController.class
-module-info.class
 com\intermediary\controllers\WelcomeController.class
-com\intermediary\controllers\PrimaryController.class
 com\intermediary\Config.class
 com\intermediary\controllers\MainController.class
