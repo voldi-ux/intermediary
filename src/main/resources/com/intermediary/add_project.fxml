@@ -8,7 +8,11 @@
 <?import javafx.scene.text.Text?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+ minWidth="-Infinity" 
+ prefHeight="408.0"
+ fx:controller="com.intermediary.controllers.ProjectController" 
+ prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add new Project">
          <font>
@@ -17,24 +21,24 @@
       </Text>
       <VBox prefWidth="100.0" spacing="5.0">
          <children>
-            <Text lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project name" />
-            <TextField prefHeight="40.0" promptText="project name" />
+            <Text  lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project name" />
+            <TextField fx:id="name" prefHeight="40.0" promptText="project name"  />
          </children>
       </VBox>
       <VBox prefWidth="100.0" spacing="5.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Git repo name" />
-            <TextField prefHeight="40.0" promptText="Git repo name" />
+            <TextField fx:id="repoName" prefHeight="40.0" promptText="Git repo name" />
          </children>
       </VBox>
  
       <VBox prefWidth="100.0" spacing="5.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Git repo link" />
-            <TextField prefHeight="40.0" promptText="git repo link" />
+            <TextField fx:id="link" prefHeight="40.0" promptText="git repo link" />
          </children>
       </VBox>
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Add project" />
+      <Button mnemonicParsing="false" prefHeight="25.0" onMouseClicked="#addProject" prefWidth="186.0" text="Add project" />
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

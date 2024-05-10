@@ -1,11 +1,13 @@
 package com.intermediary;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class User {
 	private String email;
 	private String password;
 	private String id;
+	private ArrayList<Invite> invites = new ArrayList<Invite>();
 
 	public User() {
 	}
@@ -39,6 +41,14 @@ public class User {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public ArrayList<Invite> getInvites() {
+		return invites;
+	}
+
+	public void setInvites(ArrayList<Invite> invites) {
+		this.invites = invites;
 	}
 
 	@Override

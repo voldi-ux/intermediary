@@ -56,7 +56,7 @@ public class AuthenticationManager {
 	}
 
 	public boolean signIn(String email, String password) {
-	
+
 		CollectionReference users = store.collection("users");
 
 		Query emailPassQuery = users.whereEqualTo("email", email);// find a user
@@ -66,14 +66,14 @@ public class AuthenticationManager {
 			// we should not be able to have more than one with uers with the same email and
 			// password
 			if (documents.size() > 0) {
-				User user = documents.get(0).toObject(User.class);
-				if(BCrypt.verifyer().verify(password.getBytes(), user.getPassword().getBytes()).verified) {
-					System.out.println(user);
+				User firstUser = documents.get(0).toObject(User.class);
+				if (BCrypt.verifyer().verify(password.getBytes(), firstUser.getPassword().getBytes()).verified) {
+					this.user = firstUser;
+					isLogedIn = true;
 					return true;
 				}
 			}
 
-		
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (ExecutionException e) {
@@ -95,16 +95,16 @@ public class AuthenticationManager {
 				return false;
 			}
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		User user = new User(email, passHashed);
 
-		ApiFuture<DocumentReference> results = users.add(new User(email, passHashed));
+		ApiFuture<DocumentReference> results = users.add(user);
 
 		if (!results.isCancelled()) {
+			manager.setUser(user);
 			return true;
 		}
 
