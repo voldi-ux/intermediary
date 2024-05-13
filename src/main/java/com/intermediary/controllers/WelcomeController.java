@@ -67,8 +67,9 @@ public class WelcomeController extends MainController implements Initializable {
 	}
 
 	public void setTimeOut(Task<Void> t) {
-		new Thread(t).start();
-		;
+		Thread loader =  new Thread(t); // start
+		loader.setDaemon(true); // this ensures that the thread is terminated once all the stages are closed
+		loader.start();
 	}
 
 }

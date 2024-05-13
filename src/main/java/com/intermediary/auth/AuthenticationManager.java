@@ -1,29 +1,36 @@
 package com.intermediary.auth;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.Query;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.intermediary.Invitation;
+import com.intermediary.Invite;
 import com.intermediary.User;
 import com.intermediary.firebase.Firebase;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
+import javafx.scene.control.ListView;
 
 //class to manager all authenticatio related stuff
 public class AuthenticationManager {
 	private User user;
 	private boolean isLogedIn = false;
 	private int COST = 10;
+	private ListView<Invitation> list;
 	private static AuthenticationManager manager = null;
 	private static Firestore store = Firebase.getStore();
+	protected static boolean isReloading = false;
+	protected static long DURATION = 5000; // Will check every 5 seconds to see if the user has any new invitations
 
 	private AuthenticationManager() {
 	}
@@ -105,30 +112,72 @@ public class AuthenticationManager {
 
 		if (!results.isCancelled()) {
 			manager.setUser(user);
+			manager.setLogedIn(true);
 			return true;
 		}
 
 		return false;
 	}
 
-	public void handleSignIn(boolean isSignedIn, String uid) {
-		System.out.println(isSignedIn + uid);
-	}
+	public void reloadUserinfo(ListView<Invitation> listItems) {
+           this.list = listItems;
+		if (!isReloading && isLogedIn()) {
 
-	private String readFileAsString(String path) {
-		// TODO Auto-generated method stub
-		String str = "";
-		try {
-			Scanner sn = new Scanner(new File(path));
+			Task<Void> task = new Task<Void>() {
 
-			while (sn.hasNextLine()) {
-				str += sn.nextLine() + "\n";
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				@Override
+				protected Void call() throws Exception {
+
+					while (true) {
+						Thread.sleep(DURATION); // wait for 1 second before making a network request
+						CollectionReference users = store.collection("users");
+
+						Query query = users.whereEqualTo("id", user.getId());
+
+						for (DocumentSnapshot doc : query.get().get().getDocuments()) {
+							var user = doc.toObject(User.class);
+							// run the update on the UI thread
+							Platform.runLater(() -> {
+								list.getItems().clear();
+								for (Invite invt : user.getInvites()) {			
+									list.getItems().add(new Invitation(invt));
+					
+								}
+							});
+						}
+
+					}
+
+				}
+			};
+
+			Thread loader =  new Thread(task); // start
+			loader.setDaemon(true); // this ensures that the thread is terminated once all the stages are closed
+			loader.start();
+			isReloading = true;
 		}
 
-		return str;
 	}
+//	public void handleSignIn(boolean isSignedIn, String uid) {
+//		System.out.println(isSignedIn + uid);
+//	}
+//	
+//	
+//
+//	private String readFileAsString(String path) {
+//		// TODO Auto-generated method stub
+//		String str = "";
+//		try {
+//			Scanner sn = new Scanner(new File(path));
+//
+//			while (sn.hasNextLine()) {
+//				str += sn.nextLine() + "\n";
+//			}
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//		return str;
+//	}
 }

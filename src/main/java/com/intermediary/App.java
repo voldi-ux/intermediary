@@ -24,7 +24,6 @@ public class App extends Application {
 		welcome.initStyle(StageStyle.UNDECORATED);
 
 		Scene welocme = new Scene(loadFXML("welcome"));
-		Scene main = new Scene(loadFXML("primary"));
 		Scene signIn = new Scene(loadFXML("signIn"));
 		Scene signUp = new Scene(loadFXML("signUp"));
         Scene addProject = new Scene(loadFXML("add_project"));
@@ -54,7 +53,6 @@ public class App extends Application {
 		mainStage.setTitle("Intermediary");
 		// adding 
 		manager.AddScene("welcome", welocme);
-		manager.AddScene("main", main);
 		manager.AddScene("signIn", signIn);
 		manager.AddScene("signUp", signUp);
 		manager.AddScene("addProject", addProject);
@@ -81,7 +79,7 @@ public class App extends Application {
 	}
 
 	
-	private static Parent loadFXML(String fxml) throws IOException {
+	public static Parent loadFXML(String fxml) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
 		return fxmlLoader.load();
 	}

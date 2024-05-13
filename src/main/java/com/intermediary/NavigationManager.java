@@ -23,7 +23,15 @@ public class NavigationManager {
 		}
 		scenes.put(name, scene);
 	}
-
+	
+	public void removeScene(String name) throws Exception {
+		if (!scenes.containsKey(name)) {
+			throw new Exception("No such Scene");
+		}
+		scenes.remove(name);
+	}
+	
+	
 	// puts a scene to the scenes map
 	public void AddStage(String name, Stage stage) throws Exception {
 		if (stages.containsKey(name)) {

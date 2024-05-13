@@ -11,6 +11,7 @@ module com.intermediary {
 	requires com.google.api.apicommon;
 	requires com.google.auth;
 	requires google.cloud.core;
+	requires java.compiler;
 	
     opens com.intermediary.controllers to javafx.fxml;
     

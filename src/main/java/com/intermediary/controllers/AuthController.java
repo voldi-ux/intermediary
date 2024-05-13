@@ -1,23 +1,27 @@
 package com.intermediary.controllers;
 
+import com.intermediary.App;
+import com.intermediary.utils.EmailValidator;
+
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.PasswordField ;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class AuthController extends MainController {
 
 	@FXML
-	private PasswordField  signInPasswordInput;
+	private PasswordField signInPasswordInput;
 	@FXML
-	private TextField   signInEmailInput;
+	private TextField signInEmailInput;
 	@FXML
-	private TextField   signUpEmailInput;
+	private TextField signUpEmailInput;
 	@FXML
-	private PasswordField  signUpPasswordInput;
+	private PasswordField signUpPasswordInput;
 	@FXML
-	private PasswordField  signUpConfirmPasswordInput;
+	private PasswordField signUpConfirmPasswordInput;
 
 	// this method may be called when signing in or signing up
 	@FXML
@@ -26,9 +30,8 @@ public class AuthController extends MainController {
 
 		String email = signInEmailInput.getText();
 		String pass = signInPasswordInput.getText();
-		
 
-		if (email.isEmpty() || pass.isEmpty() || email.length() < 5) {
+		if (!EmailValidator.isValidEmail(email) || pass.length() < 5) {
 			alert.setContentText("Please check your inputs again");
 			alert.show();
 			return;
@@ -37,9 +40,13 @@ public class AuthController extends MainController {
 		boolean signedIn = authManager.signIn(email, pass);
 
 		if (signedIn) {
+
+			manager.AddScene("main", new Scene(App.loadFXML("primary")));
 			manager.addSceneToStage("main", "main");
 			manager.getStage("authStage").close();
 			manager.showStage("main");
+			signInEmailInput.setText("");
+			signInPasswordInput.setText("");
 		} else {
 			alert.setContentText("Sorry we could not sign you in at the moment try again later");
 			alert.show();
@@ -55,7 +62,7 @@ public class AuthController extends MainController {
 		String pass = signUpPasswordInput.getText();
 		String confirmPass = signUpConfirmPasswordInput.getText();
 
-		if (email.isEmpty() || pass.isEmpty() || confirmPass.isEmpty() || email.length() < 5) {
+		if (!EmailValidator.isValidEmail(email) || pass.length() < 5) {
 			alert.setContentText("Please check your inputs again");
 			alert.show();
 			return;
@@ -69,9 +76,14 @@ public class AuthController extends MainController {
 		boolean signedIn = authManager.signUp(email, pass);
 
 		if (signedIn) {
+			manager.AddScene("main", new Scene(App.loadFXML("primary")));
 			manager.addSceneToStage("main", "main");
 			manager.getStage("authStage").close();
 			manager.showStage("main");
+
+			signUpEmailInput.setText("");
+			signUpPasswordInput.setText("");
+			signUpConfirmPasswordInput.setText("");
 		} else {
 			alert.setContentText("Sorry we could not sign you up at the moment try again later");
 			alert.show();

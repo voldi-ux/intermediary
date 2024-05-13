@@ -5,15 +5,15 @@ import java.util.UUID;
 public class Invite {
 	private String projectId;
 	private String sendId;
-	private String receiverId;
 	private String projectName;
     private String id;
     
-	public Invite(String projectId, String sendId, String receiverId, String projectName) {
+    public Invite() {}
+    
+	public Invite(String projectId, String sendId, String projectName) {
 		super();
 		this.projectId = projectId;
 		this.sendId = sendId;
-		this.receiverId = receiverId;
 		this.projectName = projectName;
 		this.id = UUID.randomUUID().toString();
 		
@@ -33,14 +33,6 @@ public class Invite {
 
 	public void setSendId(String sendId) {
 		this.sendId = sendId;
-	}
-
-	public String getReceiverId() {
-		return receiverId;
-	}
-
-	public void setReceiverId(String receiverId) {
-		this.receiverId = receiverId;
 	}
 
 	public String getProjectName() {

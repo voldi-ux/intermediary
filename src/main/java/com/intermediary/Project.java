@@ -3,6 +3,8 @@ package com.intermediary;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import com.intermediary.blockchain.blockchainExtended;
+
 import acsse.csc03a3.Blockchain;
 
 public class Project {
@@ -11,11 +13,11 @@ public class Project {
 	private String repoName;
 	private String link;
 	private String ownerId; // the person that created the project
-	private ArrayList<Participant> participants = new ArrayList<>();
-	private Blockchain<String> blockchain = new Blockchain<String>();
-	private ArrayList<CommitDetails> commits = new ArrayList<CommitDetails>(); //contains un verie
-
+	private ArrayList<String> participants = new ArrayList<>();
+	private ArrayList<CommitDetails> commits = new ArrayList<CommitDetails>(); //contains unverified commits
+	
 	public Project() {
+		
 	}
 
 	public Project(String name, String repoName, String link, String ownerId) {
@@ -25,6 +27,7 @@ public class Project {
 		this.link = link;
 		this.ownerId = ownerId;
 		this.id = UUID.randomUUID().toString();
+				
 	}
 
 	public String getId() {
@@ -43,7 +46,7 @@ public class Project {
 		this.commits = commits;
 	}
 
-	public void setParticipants(ArrayList<Participant> participants) {
+	public void setParticipants(ArrayList<String> participants) {
 		this.participants = participants;
 	}
 
@@ -79,20 +82,12 @@ public class Project {
 		this.ownerId = ownerId;
 	}
 
-	public ArrayList<Participant> getParticipants() {
+	public ArrayList<String> getParticipants() {
 		return participants;
 	}
 
-	public void addParticipant(Participant p) {
+	public void addParticipant(String p) {
 		participants.add(p);
-	}
-
-	public Blockchain<String> getBlockchain() {
-		return blockchain;
-	}
-
-	public void setBlockchain(Blockchain<String> blockchain) {
-		this.blockchain = blockchain;
 	}
 
 }

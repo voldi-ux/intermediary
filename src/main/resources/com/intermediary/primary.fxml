@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intermediary.controllers.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intermediary.controllers.PrimaryController">
 	<children>
 		<ImageView fitHeight="780.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
 			<image>
@@ -124,7 +124,7 @@
 		</ScrollPane>
 		<HBox layoutX="318.0" layoutY="24.0" prefHeight="29.0" prefWidth="707.0" spacing="100.0">
 			<children>
-				<Text fx:id="selectedname" fill="WHITE" strokeType="OUTSIDE" strokeWidth="30.0" text="Silicon Valley Voice app" wrappingWidth="205.7958984375">
+				<Text fx:id="selectedname" fill="WHITE" strokeType="OUTSIDE" strokeWidth="30.0" text="No Project Selected" wrappingWidth="205.7958984375">
 					<font>
 						<Font size="18.0" />
 					</font>

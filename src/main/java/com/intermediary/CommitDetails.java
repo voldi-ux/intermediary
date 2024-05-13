@@ -9,6 +9,9 @@ public class CommitDetails {
 	private String verifierId;
 	private String details;
 
+	public CommitDetails() {
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -55,6 +58,12 @@ public class CommitDetails {
 
 	public void setVerifierId(String verifierId) {
 		this.verifierId = verifierId;
+	}
+
+	@Override
+	public String toString() {
+		return "CommitDetails [id=" + id + ", projectId=" + projectId + ", userId=" + userId + ", verifierId="
+				+ verifierId + ", details=" + details + "]";
 	}
 
 }
