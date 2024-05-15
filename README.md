@@ -14,24 +14,34 @@ This software is a secure and flexible solution designed to facilitate efficient
 
 ## Getting Started
 
+### Prerequisites
+
+1. **Google Console**
+
+- Make sure you have already set up a google console account
+- Setup a new project
+- Download the configuration object as json file and name it as auth_account.json
+- Save the file in the root directory of the project
+
+2. **Maven**
+
+- Make sure you have maven set up on your pc as well.
+
 ### Installation
+
 
 1. **Clone the Repository**
    ```sh
    git clone [https://github.com/yourusername/project-name.git](https://github.com/voldi-ux/intermediary.git)
    ```
-2. **Install Dependencies**
-   Navigate to the project directory and install the required dependencies:
-   ```sh
-   cd project-name
-   npm install
-   ```
-3. **Run the Project**
+
+2. **Run the Project**
    Start the project using the appropriate command:
    ```sh
-   npm start
+   mvn javafx:run
    ```
 
-## Contact
+## Presentation
 
-For any questions or support, please contact [support@example.com](mailto:support@example.com).
+[link to presentation](mailto:support@example.com).
+
