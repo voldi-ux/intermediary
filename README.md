@@ -32,7 +32,7 @@ This software is a secure and flexible solution designed to facilitate efficient
 
 1. **Clone the Repository**
    ```sh
-   git clone [https://github.com/yourusername/project-name.git](https://github.com/voldi-ux/intermediary.git)
+   git clone https://github.com/yourusername/project-name.git](https://github.com/voldi-ux/intermediary.git
    ```
 
 2. **Run the Project**
