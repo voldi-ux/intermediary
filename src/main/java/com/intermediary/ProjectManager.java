@@ -67,6 +67,11 @@ public class ProjectManager {
 
 				Logger.addAndDisplay("All commits for project : " + selectedProject.getName()
 						+ " was successfully verified and added to the blockchain");
+				
+
+				Logger.addAndDisplay("is chain valid : " + blockchain.isChainValid());
+				
+				
 
 			} catch (MalformedURLException e) {
 

@@ -24,7 +24,7 @@ public class Invitation extends HBox {
 	private Invite invite;
 	private static ListView<ProjectItem> items;
 	private Firestore store = Firebase.getStore();
-	private Button acceptBtn = new Button("Accep Invite");
+	private Button acceptBtn = new Button("Accept Invite");
 	private Button decline = new Button("Decline Invite");
 
 	public Invitation(Invite invite) {
